@@ -15,6 +15,7 @@ package-lock.json
 .sass-cache
 .tmp
 .cache
+.env
 dist
 build
 coverage
