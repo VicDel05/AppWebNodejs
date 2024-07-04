@@ -15,6 +15,9 @@ app.use(session({
 }));
 
 // Middlewares
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,7 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Endpoints
 app.get('/', (req, res) =>{
-    res.send("Servidor encendido");
+    res.render('index', {
+        title: 'Home'
+    })
 });
 
 // Data Base
@@ -34,7 +39,7 @@ database.connect((err)=> {
     console.log('Base de datos conectada');
 });
 
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Servidor iniciado en http://localhost:${port}`);
 });
