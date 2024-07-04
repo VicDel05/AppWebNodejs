@@ -5,6 +5,8 @@ const path = require('path');
 const dotenv = require('dotenv');
 const database = require('./config/database');
 
+require('dotenv').config();
+
 // Session
 app.use(session({
     secret: process.env.SECRET_KEY,
